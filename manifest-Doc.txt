@@ -1,0 +1,68 @@
+{
+    "manifest_version": 3, 
+    // This specifies that we are using Manifest V3, which is required for modern Chrome extensions.
+  
+    "name": "YouTube Quiz Generator", 
+    // The name of the extension that will appear in Chrome.
+  
+    "version": "1.0", 
+    // The current version of the extension.
+  
+    "description": "תוסף ליצירת שאלונים מסרטוני YouTube", 
+    // A short description of what the extension does (appears in Chrome extensions settings).
+  
+    "permissions": [
+      "activeTab",
+      "scripting",
+      "storage"
+    ], 
+    /*
+    - "activeTab": Allows the extension to interact with the currently active tab.
+    - "scripting": Enables the extension to execute scripts on web pages.
+    - "storage": Allows saving data in Chrome's local storage.
+    */
+  
+    "host_permissions": [
+      "https://www.youtube.com/*"
+    ], 
+    // This grants permission to run scripts only on YouTube pages.
+  
+    "action": { 
+      "default_popup": "popup.html",
+      "default_icon": {
+        "16": "icon.png",
+        "48": "icon.png",
+        "128": "icon.png"
+      }
+    },
+    /*
+    - "default_popup": Defines the file (popup.html) that opens when clicking the extension icon.
+    - "default_icon": Specifies different sizes of the extension icon.
+    */
+  
+    "background": {
+      "service_worker": "background.js"
+    }, 
+    /*
+    - "background": Runs a service worker (background.js) that keeps the extension running in the background.
+    */
+  
+    "content_scripts": [
+      {
+        "matches": ["*://www.youtube.com/*"],
+        "js": ["content.js"]
+      }
+    ]
+    /*
+    - "content_scripts": Runs content.js only on YouTube pages.
+    */
+  }
+  
+
+  "default_icon": {
+        "16": "icon.png",
+        "48": "icon.png",
+        "128": "icon.png"
+      }
+
+    //TODO add an icon 
